@@ -23,7 +23,7 @@ jobs:
       runs-on: self-hosted
       needs: container
       steps:
-        - name: Deploy to Kubernetes
+        - name: Deploy to Docker
           run: |
             docker stop tuto_live || true
             docker rm tuto_live || true
