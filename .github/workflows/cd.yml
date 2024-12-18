@@ -25,6 +25,6 @@ jobs:
       steps:
         - name: Deploy to Kubernetes
           run: |
-            docker stop tuto_live
-            docker rm tuto_live
-            docker run --name tuto_live trialk033s3.jfrog.io/docker-trial/tuto_live_jean:latest
+            docker stop tuto_live || true
+            docker rm tuto_live || true
+            docker run --name tuto_live -p 4000:4000 trialk033s3.jfrog.io/docker-trial/tuto_live_jean:latest
