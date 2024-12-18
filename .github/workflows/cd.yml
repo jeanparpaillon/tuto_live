@@ -19,3 +19,12 @@ jobs:
             context: .
             push: true
             tags: trialk033s3.jfrog.io/docker-trial/tuto_live_jean:latest, trialk033s3.jfrog.io/docker-trial/tuto_live_jean:${{ github.ref_name }}
+  deploy:
+      runs-on: self-hosted
+      needs: container
+      steps:
+        - name: Deploy to Kubernetes
+          run: |
+            docker stop tuto_live
+            docker rm tuto_live
+            docker run --name tuto_live trialk033s3.jfrog.io/docker-trial/tuto_live_jean:latest
