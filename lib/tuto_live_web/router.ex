@@ -5,7 +5,9 @@ defmodule TutoLiveWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", TutoLiveWeb do
+  scope "/", TutoLiveWeb do
     pipe_through :api
+
+    get "/", HelloController, :fortune
   end
 end
