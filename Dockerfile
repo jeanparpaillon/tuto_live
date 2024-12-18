@@ -84,6 +84,8 @@ RUN apt-get update -y && apt-get install -y fortunes && apt-get clean && rm -f /
 # Only copy the final release from the build stage
 COPY --from=builder --chown=nobody:root /app/_build/${MIX_ENV}/rel/tuto_live ./
 
+EXPOSE 4000
+
 USER nobody
 
 # If using an environment that doesn't automatically reap zombie processes, it is

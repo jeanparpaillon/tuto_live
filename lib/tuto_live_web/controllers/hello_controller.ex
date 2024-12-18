@@ -4,7 +4,7 @@ defmodule TutoLiveWeb.HelloController do
 
 
   def fortune(conn, _params) do
-    {content, 0} = System.cmd("fortune", [])
+    {content, 0} = System.cmd("/usr/games/fortune", [])
 
     conn
     |> put_status(:ok)
