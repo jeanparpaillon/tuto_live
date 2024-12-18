@@ -1,0 +1,21 @@
+name: On merge
+on:
+  push:
+    branches:
+      - main
+jobs:
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+            registry: https://trialk033s3.jfrog.io/docker-trial
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+            context: .
+            push: true
+            tags: trialk033s3.jfrog.io/docker-trial/tuto_live_jean:latest, trialk033s3.jfrog.io/docker-trial/tuto_live_jean:${{ github.ref_name }}
